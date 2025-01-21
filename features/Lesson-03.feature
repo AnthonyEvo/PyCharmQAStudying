@@ -1,6 +1,9 @@
-# Created by Anthony at 1/20/2025
-Feature: # Enter feature name here
-  # Enter feature description here
+Feature: Ebay.com regression-02
 
-  Scenario: # Enter scenario name here
-    # Enter steps here
+    Scenario: Validate the search functionality
+
+        Given Navigate to ebay
+        Then Search for Daily Deals in nav
+        Then Search for Brand Outlet in nav
+        Then Search for Gift Cards in nav
+        Then Search for Help & Contact in nav
