@@ -1,0 +1,14 @@
+$x("//a[@class = 'gh-p'] and text() = ' Sell'")
+false
+
+$x("//a[@class = 'gh-p' and text() = ' Sell']")
+[a.gh-p]
+
+$x("//a[contains(text(), ' Sell') and @class = 'gh-p']")
+[a.gh-p]
+
+$x("//a[@aria-label = 'Your shopping cart']")
+	[a.gh-eb-li-a.gh-rvi-menu]
+
+$x("//td[@class = 'gh-td']/child::div/child::button")
+	[button#gh-shop-a.gh-control]

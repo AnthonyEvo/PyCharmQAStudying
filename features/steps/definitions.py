@@ -1,3 +1,5 @@
+from time import sleep
+
 from behave import step
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -5,7 +7,7 @@ from selenium.webdriver.common.by import By
 @step('Navigate to {site}')
 def test(context, site):
     context.driver = webdriver.Chrome()
-    context.driver.get(f"https://www.{site}.com")
+    context.driver.get(f"https://www.{site}")
 
 @step('Go to ebay.com')
 def test(context):
@@ -34,3 +36,17 @@ def validate_first_result(context):
 @step('Search for {variable1} in {variable2}')
 def search_for_element(context, variable1, variable2):
     result = context.driver.find_element(By.XPATH, f"//{variable2}//*[contains(text(), '{variable1}') or @aria-label = '{variable1}']")
+
+# $x("//a[contains(text(), 'Brand Outlet') or @aria-label = 'Brand Outlet']")
+
+@step('Open link {var1} in {var2}')
+def open_selected_element(context, var1, var2):
+    element = context.driver.find_element(By.XPATH, f"//{var2}//a[contains(text(), '{var1}') or @aria-label = '{var1}']")
+    element.click()
+
+@step('Verify {var1} in {var2} and go back to {var3}')
+def verify_element(context, var1, var2, var3):
+    sleep(5)
+    element1 = context.driver.find_element(By.XPATH, f"//{var2}//*[contains(text(), '{var1}') or contains(text(), 'Please verify yourself') or @aria-label = '{var1}' or class = '{var1}']")
+    element2 = context.driver.get(f"https://www.{var3}")
+    sleep(5)
