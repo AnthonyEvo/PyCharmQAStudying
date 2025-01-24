@@ -1,6 +1,5 @@
 Feature: Ebay.com regression-02
-
-    Scenario: Validate the search functionality
+    Scenario: Validate the search bar functionality
 
         Given Navigate to ebay.com
         * Search for Daily Deals in nav
@@ -8,8 +7,8 @@ Feature: Ebay.com regression-02
         * Verify Deals in Main and go back to ebay.com
 
         * Search for Brand Outlet in nav
-        #* Open link Brand Outlet in nav
-        #* Verify Brand Outlet in section and go back to ebay.com
+        * Open link Brand Outlet in nav
+        * Verify Brand Outlet in section and go back to ebay.com
 
         * Search for Gift Cards in nav
         * Open link Gift Cards in nav
