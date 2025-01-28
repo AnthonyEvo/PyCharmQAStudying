@@ -1,0 +1,47 @@
+xPath:
+    xPath is query language for XML
+
+    Y - axis
+
+    //  - look anywhere from here           -   descendant::
+    /   - 1 lvl from here                   -   child::
+    .// - look anywhere inside the node
+    ./  - 1 lvl inside the node
+
+    self::  - the direct node
+
+        <div>
+            <a>
+            <b>    #//*[self::a or self::b]
+            <c>
+        <div/>
+
+    ancestor::  - help us to search for same elements in unic structures(trees)
+
+    []  - description of tag
+    or / and    - logical operators
+    @   - declare attributes in [@attribute]
+
+    X - axis
+
+    siblings::
+    following-siblings:: - get all elements of the same level after the node
+    preceding-siblings:: - get all elements of the same level before the node
+
+    xPath functions:
+        text()
+        name()
+        position()
+        last()
+
+        contains()
+        not() - excluding function
+        count() - get count of elements in list
+        starts-with(string1, string2) - Returns true when first string starts with the second string
+
+        substring(source_string, starting_char_num, length_of_substring)
+
+        substring-after(source, marker) - return the string before marker
+        substring-before(source, marker) - return the string after marker
+
+        concat(string_01, string_02, ... ,string_last) - concat strings to one

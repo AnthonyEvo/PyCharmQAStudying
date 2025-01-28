@@ -1,0 +1,64 @@
+Task_01 - Nested Selectors
+    "Find the list items for all the irritating things in September."
+    xPath:
+        //li[ancestor::div[@class='september'] and ancestor::div[@class = 'irritating']]
+
+Task_02 - Beginning Conditionals
+    "Get the link for all cars that priced $25,000."
+    xPath:
+        //a[following-sibling::span[@class = 'price' and text() = '$25,000']]
+
+Task_03 - Beginning Conditionals #2
+    "Get the link for all Fords with the year greater then 1950."
+    xPath:
+        //a[following-sibling::span[@class = 'make' and text() = 'Ford'] and following-sibling::span[@class = 'year' and text() > '1950']]
+
+Task_04 - Beginning Conditionals #3
+    "Get the link for all Fords made in 1958."
+    xPath:
+        //a[following-sibling::span[@class = 'make' and text() = 'Ford'] and following-sibling::span[@class = 'year' and text() = '1958']]
+
+Task_05 - Find number of patients
+    "Number of patients admitted to "Good Health Clinic"
+    xPath:
+        //name[ancestor::patientrole and text() = 'Good Health Clinic']
+
+Task_06 - Find the patient
+    "Find family name of the patient born on 17 Dec 1955?"
+    xPath:
+        //family[ancestor::patient[.//birthtime[@value = '19551217']]]
+
+Task_07 - Find the rate
+    "Find the rate where loantype is "30-Year Fixed Rate" and subtype is "B""
+    xPath:
+        //rate[./loantype[text() = '30-Year Fixed Rate'] and ./subtype[text() = 'B']]
+
+Task_08 - Find the color
+    "Get the value of mathcolor where colorvalue is 10."
+    xPath:
+        //mathcolor[following-sibling::colorvalue[text() = '10']]/text()
+
+Task_09 - Querying Subchildren
+    "Find the values of id if their sub-node meta contains 123456"
+    xPath:
+        //produit[//meta[@* = '123456']]/@id - ???
+
+Task_10 - Finding By Number of Elements
+    "Find the h1s for every div with three list elements in it."
+    xPath:
+        //h1[following-sibling::ul[count(li) = 3]]
+
+Task_11 - Finding Sibling Elements
+    "Q. I am positioned in the node[@id='1']. I need an Xpath to match all the elements until the next not empty node (here node[@id='2'])"
+    xPath:
+        //node[@id = 1]/following-sibling::node[following-sibling::node[@id = '2']]
+
+Task_12 - Matching Text
+    "Find the XPath for "match text""
+    xPath:
+        //a[contains(text(), 'match text') and substring(text(), 4, 10)]/text()
+
+Task_13 - Find percentage
+    "Find the XPath for "match text""
+    xPath:
+        //percentage[preceding-sibling::effectivedate[starts-with(text(), '2016')]]
