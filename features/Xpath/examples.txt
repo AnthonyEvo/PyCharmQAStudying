@@ -12,3 +12,12 @@ $x("//a[@aria-label = 'Your shopping cart']")
 
 $x("//td[@class = 'gh-td']/child::div/child::button")
 	[button#gh-shop-a.gh-control]
+
+
+#get list of items from eBay pool
+
+    #list of <li>
+    $x("//li[starts-with(@class, 's-item')][parent::ul[starts-with(@class, 'srp-results') and not(contains(@class, 'carousel'))]][ancestor::div[starts-with(@role, 'main')]]")
+
+    @get titles of items from
+    $x("//li[starts-with(@class, 's-item')][parent::ul[starts-with(@class, 'srp-results') and not(contains(@class, 'carousel'))]][ancestor::div[starts-with(@role, 'main')]]//span[@role = 'heading']/text()")

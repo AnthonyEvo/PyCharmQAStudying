@@ -1,6 +1,11 @@
 xPath:
     xPath is query language for XML
 
+    Behave variables:
+        - string
+        - multiline string
+        - table
+
     Y - axis
 
     //  - look anywhere from here           -   descendant::

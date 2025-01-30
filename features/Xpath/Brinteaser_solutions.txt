@@ -41,7 +41,7 @@ Task_08 - Find the color
 Task_09 - Querying Subchildren
     "Find the values of id if their sub-node meta contains 123456"
     xPath:
-        //produit[//meta[@* = '123456']]/@id - ???
+        //produit[.//meta[@code = '123456' and @value = '123456']]//@id
 
 Task_10 - Finding By Number of Elements
     "Find the h1s for every div with three list elements in it."
