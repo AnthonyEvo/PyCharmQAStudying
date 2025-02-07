@@ -2,7 +2,13 @@ from time import sleep
 from behave import step
 from selenium.webdriver.common.by import By
 
+import warnings
+
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+
 sleep_time = 0
+
 
 @step('Set scenario URL as {url}')
 def set_url_for_scenario(context, url):
@@ -19,7 +25,11 @@ def search_for_request(context, request):
 
 @step('Click the "Search" button')
 def test_def(context):
-    search_button = context.driver.find_element(By.XPATH, "//section[@class = 'gh-header__main']/form[@class = 'gh-search']//div[//span[text() = 'Search'] and @class = 'gh-search-button__wrap']/button")
+
+    button_xpath = "//section[@class = 'gh-header__main']/form[@class = 'gh-search']//div[//span[text() = 'Search'] and @class = 'gh-search-button__wrap']/button"
+    error_message = 'Button is not located'
+
+    search_button = WebDriverWait(context.driver, 10).until(expected_conditions.presence_of_element_located((By.XPATH, button_xpath)), error_message)
     search_button.click()
 
 @step('the first result item is "iPhone"')
@@ -68,17 +78,21 @@ def anomaly_search_at_few_pages(context, item_filter, count):
     page = 1
     while page <= int(count):
         print(f"--- Page {page} ---" )
-        list_check(item_filter, records)
+        context.anomaly_counter = list_check(item_filter, records)
         context.driver.find_element(By.XPATH, "//a[@aria-label = 'Go to next search page']").click()
         page += 1
         records = context.driver.find_elements(By.XPATH,"//li[starts-with(@class, 's-item')][parent::ul[starts-with(@class, 'srp-results') and not(contains(@class, 'carousel'))]][ancestor::div[starts-with(@role, 'main')]]//span[@role = 'heading']")
 
+
 def list_check(item_filter, records):
+    anomalies_count = 0
     for record in records:
         if item_filter.lower() not in record.text.lower():
             print(record.text)
         else:
-            print(f"Anomaly detected: {record.text}")
+            warnings.warn(f"Anomaly detected: {record.text}")
+            anomalies_count += 1
+    return anomalies_count
 
 @step("go set default sleep time to {time}")
 def step_impl(context, time):

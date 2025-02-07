@@ -1,4 +1,4 @@
-xPath:
+xPath notes:
     xPath is query language for XML
 
     Behave variables:
@@ -50,3 +50,7 @@ xPath:
         substring-before(source, marker) - return the string after marker
 
         concat(string_01, string_02, ... ,string_last) - concat strings to one
+
+    Selenium notes:
+
+        context.driver.implicitly_wait() - specialised method for selenium to turn to sleep Selenium methods
