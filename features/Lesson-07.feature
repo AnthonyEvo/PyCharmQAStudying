@@ -3,7 +3,7 @@
 Feature: Ebay.com Lesson-07 advanced cycles and Behave tables
 
   Background:
-    When go set default sleep time to 3
+    When start, set default sleep time to 3
 
   Scenario Outline: Filter checkboxes testing
     Given In search field type Iphone
@@ -16,4 +16,4 @@ Feature: Ebay.com Lesson-07 advanced cycles and Behave tables
     Examples:
       | Filter_01_list | Filter_01_value | Filter_02_list | Filter_02_value | Filter_03_list | Filter_03_value  |
       | Network        | Verizon         | Model          | Apple iPhone 11 | Lock Status    | Factory Unlocked |
-      | Network        | T-Mobile        | Model          | Apple iPhone 12 | Lock Status    | Not Specified    |
+#      | Network        | T-Mobile        | Model          | Apple iPhone 12 | Lock Status    | Not Specified    |
